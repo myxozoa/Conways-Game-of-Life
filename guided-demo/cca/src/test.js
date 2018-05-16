@@ -9,13 +9,13 @@ const MODULO = 8;
  */
 function Array2D(width, height) {
   //NOTE:  Iterate through Array2D row first then column
-	let a = new Array(height);
+    let a = new Array(height);
   
-	for (let i = 0; i < height; i++) {
-	  a[i] = new Array(width);
-	}
+    for (let i = 0; i < height; i++) {
+    a[i] = new Array(width);
+    }
   
-	return a;
+    return a;
 }
   
 /**
@@ -36,9 +36,7 @@ class CCA {
       Array2D(width, height),
       Array2D(width, height)
     ]
-
-    this.randomize();
-
+        
     this.clear();
   }
 
@@ -55,31 +53,43 @@ class CCA {
    * Clear the cca grid
    */
   clear() {
+    for (let y = 0; y < this.height; y++) {
+      this.cells[this.currentBufferIndex][y].fill(0);
+    }
   }
 
   /**
    * Randomize the cca grid
    */
   randomize() {
+    // Arrays pass by ref, so buffer mutates this.cells:
     let buffer = this.cells[this.currentBufferIndex];
+
     for(let row = 0; row < this.height; row++) {
       for(let col = 0; col < this.width; col++) {
-        buffer[row][col] = Math.floor(Math.random() * MODULO);
-        
+        buffer[row][col] = (Math.random() * MODULO) | 0;
       }
     }
+    // console.log('cells after randomize', this.cells);
   }
 
   /**
    * Run the simulation for a single step
    */
   step() {
-    let backBufferIndex = 1 - this.currentBufferIndex;
+    let backBufferIndex = this.currentBufferIndex === 0 ? 1 : 0;
     let currentBuffer = this.cells[this.currentBufferIndex];
     let backBuffer = this.cells[backBufferIndex];
 
     const hasInfectiousNeighbor = (row, col) => {
       const nextValue = (currentBuffer[row][col] + 1) % MODULO;
+
+      // West
+      if(col > 0){
+        if (currentBuffer[row][col - 1] === nextValue){
+          return true;
+        }
+      }
       
       // North
       if(row > 0){
@@ -102,41 +112,6 @@ class CCA {
         }
       }
 
-      // West
-      if(col > 0){
-        if (currentBuffer[row][col - 1] === nextValue){
-          return true;
-        }
-      }
-
-      // North-East
-      if(row > 0 && col < this.height - 1){
-        if (currentBuffer[row - 1][col + 1] === nextValue){
-          return true;
-        }
-      }
-
-      // North-West
-      if(col > 0 && row > 0){
-        if (currentBuffer[row - 1][col - 1] === nextValue){
-          return true;
-        }
-      }
-
-      // South-East
-      if(row < this.height - 1 && col < this.width - 1){
-        if (currentBuffer[row + 1][col + 1] === nextValue) {
-          return true;
-        }
-      }
-
-      // South-West
-      if(col > 0 && row < this.height - 1){
-        if (currentBuffer[row + 1][col - 1] === nextValue){
-          return true;
-        }
-      }
-
       return false;
     }
 
@@ -149,7 +124,7 @@ class CCA {
         }
       }
     }
-    this.currentBufferIndex = 1 - this.currentBufferIndex;
+    this.currentBufferIndex = this.currentBufferIndex === 0? 1: 0;
   }
 }
 

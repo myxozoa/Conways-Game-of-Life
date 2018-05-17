@@ -225,7 +225,8 @@ class Life {
                     if (neighbors === 2 || neighbors === 3) {
                         backBuffer[row][col] = ADULT;
                     } else {
-                        backBuffer[row][col] = DEAD;
+                        backBuffer[row][col] = currentBuffer[row][col];
+                        // backBuffer[row][col] = DEAD;                        
                     }
                 } else {
                     if (neighbors === 3) {

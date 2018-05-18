@@ -2,7 +2,7 @@
  * Implemention of a CCA
  */
 
-const MODULO = 4;
+const MODULO = 2;
 
 /**
  * Make a 2D array helper function
@@ -60,7 +60,7 @@ class Life {
 
     for (let row = 0; row < this.height; row++) {
       for (let col = 0; col < this.width; col++) {
-        if ((row * col) % 50 === 0) {
+        if ((row*col) % 1 === 0 && Math.sin((col+700) * (2.5-(col/row))*(1/(Math.PI*3))) > 0.3 && (Math.sqrt(col)*Math.sqrt(row)) > 20 && Math.min(Math.cos(row), Math.cos(col)) > 0.3) {
           bufferPointer[row][col] = Math.floor(Math.random() * MODULO) + 1;
         } else {
           bufferPointer[row][col] = 0;

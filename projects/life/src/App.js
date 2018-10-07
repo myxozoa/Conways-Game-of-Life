@@ -8,12 +8,14 @@ import './App.css';
 const canvasWidth = 500;
 const canvasHeight = 400;
 
-const COLORS = [
-  [0x00, 0x00, 0x00],
-  [0xFF, 0x00, 0x00],
-  [0xFF, 0xFF, 0xFF],
-  [0x00, 0x00, 0xFF],
-]
+// const COLORS = [
+//   [0x00, 0x00, 0x00],
+//   [0xFF, 0x00, 0x00],
+//   [0xFF, 0xFF, 0xFF],
+//   [0x00, 0x00, 0xFF],
+// ]
+
+const COLORS = [[0, 0, 0], [255, 0, 0], [255, 255, 255], [0, 0, 255]];
 class LifeCanvas extends Component {
 
   /**
@@ -76,7 +78,7 @@ class LifeCanvas extends Component {
 
     ctx.putImageData(imageData, 0, 0);
     this.life.step();
-    requestAnimationFrame(() => this.animFrame());
+    // requestAnimationFrame(() => this.animFrame());
 
     // Request another animation frame
     // Update life and get cells

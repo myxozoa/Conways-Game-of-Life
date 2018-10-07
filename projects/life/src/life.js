@@ -68,6 +68,14 @@ class Life {
           }
         }
 
+        for (let row = 0; row < this.height; row++) {
+            for (let col = 0; col < this.width; col++) {
+            if((Math.sqrt(col)*Math.sqrt(row)) > 200) {
+                bufferPointer[row][col] = ADULT;
+            }
+            }
+          }
+
         // const amountOfLife = 300;
         // for (let i = 200; i < amountOfLife; i++) {
 
@@ -85,63 +93,63 @@ class Life {
         // }
         // bufferPointer[300][300] = ALIVE;
 
-        const amountOfLife = 100000;
-        for (let i = 0; i < amountOfLife; i++) {
-          const row = Math.floor(Math.random() * 50) + Math.floor(this.width / 2);
-          const col = Math.floor(Math.random() * 50) + Math.floor(this.height / 4);
+        // const amountOfLife = 100000;
+        // for (let i = 0; i < amountOfLife; i++) {
+        //   const row = Math.floor(Math.random() * 50) + Math.floor(this.width / 2);
+        //   const col = Math.floor(Math.random() * 50) + Math.floor(this.height / 4);
 
-          bufferPointer[row][col] = ADULT;
-        }
+        //   bufferPointer[row][col] = ADULT;
+        // }
 
-        for (let i = 0; i < amountOfLife; i++) {
-          const row = Math.floor(Math.random() * 50) + Math.floor(this.width / 2);
-          const col = Math.floor(Math.random() * 50) + Math.floor(this.height / 4 * 2);
+        // for (let i = 0; i < amountOfLife; i++) {
+        //   const row = Math.floor(Math.random() * 50) + Math.floor(this.width / 2);
+        //   const col = Math.floor(Math.random() * 50) + Math.floor(this.height / 4 * 2);
 
-          bufferPointer[row][col] = ADULT;
-        }
+        //   bufferPointer[row][col] = ADULT;
+        // }
 
-        const left = this.width / 4;
-        const right = this.height / 4;
+        // const left = this.width / 4;
+        // const right = this.height / 4;
 
-        bufferPointer[6 + left][2 + right] = ADULT;
-        bufferPointer[6 + left][3 + right] = ADULT;
-        bufferPointer[7 + left][2 + right] = ADULT;
-        bufferPointer[7 + left][3 + right] = ADULT;
+        // bufferPointer[6 + left][2 + right] = ADULT;
+        // bufferPointer[6 + left][3 + right] = ADULT;
+        // bufferPointer[7 + left][2 + right] = ADULT;
+        // bufferPointer[7 + left][3 + right] = ADULT;
 
-        bufferPointer[4 + left][14 + right] = ADULT;
-        bufferPointer[4 + left][15 + right] = ADULT;
-        bufferPointer[5 + left][13 + right] = ADULT;
-        bufferPointer[5 + left][17 + right] = ADULT;
-        bufferPointer[6 + left][12 + right] = ADULT;
-        bufferPointer[6 + left][18 + right] = ADULT;
-        bufferPointer[7 + left][12 + right] = ADULT;
-        bufferPointer[7 + left][16 + right] = ADULT;
-        bufferPointer[7 + left][18 + right] = ADULT;
-        bufferPointer[7 + left][19 + right] = ADULT;
-        bufferPointer[8 + left][12 + right] = ADULT;
-        bufferPointer[8 + left][18 + right] = ADULT;
-        bufferPointer[9 + left][13 + right] = ADULT;
-        bufferPointer[9 + left][17 + right] = ADULT;
-        bufferPointer[10 + left][14 + right] = ADULT;
-        bufferPointer[10 + left][15 + right] = ADULT;
+        // bufferPointer[4 + left][14 + right] = ADULT;
+        // bufferPointer[4 + left][15 + right] = ADULT;
+        // bufferPointer[5 + left][13 + right] = ADULT;
+        // bufferPointer[5 + left][17 + right] = ADULT;
+        // bufferPointer[6 + left][12 + right] = ADULT;
+        // bufferPointer[6 + left][18 + right] = ADULT;
+        // bufferPointer[7 + left][12 + right] = ADULT;
+        // bufferPointer[7 + left][16 + right] = ADULT;
+        // bufferPointer[7 + left][18 + right] = ADULT;
+        // bufferPointer[7 + left][19 + right] = ADULT;
+        // bufferPointer[8 + left][12 + right] = ADULT;
+        // bufferPointer[8 + left][18 + right] = ADULT;
+        // bufferPointer[9 + left][13 + right] = ADULT;
+        // bufferPointer[9 + left][17 + right] = ADULT;
+        // bufferPointer[10 + left][14 + right] = ADULT;
+        // bufferPointer[10 + left][15 + right] = ADULT;
 
-        bufferPointer[2 + left][26 + right] = ADULT;
-        bufferPointer[3 + left][24 + right] = ADULT;
-        bufferPointer[3 + left][26 + right] = ADULT;
-        bufferPointer[4 + left][22 + right] = ADULT;
-        bufferPointer[4 + left][23 + right] = ADULT;
-        bufferPointer[5 + left][22 + right] = ADULT;
-        bufferPointer[5 + left][23 + right] = ADULT;
-        bufferPointer[6 + left][22 + right] = ADULT;
-        bufferPointer[6 + left][23 + right] = ADULT;
-        bufferPointer[7 + left][24 + right] = ADULT;
-        bufferPointer[7 + left][26 + right] = ADULT;
-        bufferPointer[8 + left][26 + right] = ADULT;
+        // bufferPointer[2 + left][26 + right] = ADULT;
+        // bufferPointer[3 + left][24 + right] = ADULT;
+        // bufferPointer[3 + left][26 + right] = ADULT;
+        // bufferPointer[4 + left][22 + right] = ADULT;
+        // bufferPointer[4 + left][23 + right] = ADULT;
+        // bufferPointer[5 + left][22 + right] = ADULT;
+        // bufferPointer[5 + left][23 + right] = ADULT;
+        // bufferPointer[6 + left][22 + right] = ADULT;
+        // bufferPointer[6 + left][23 + right] = ADULT;
+        // bufferPointer[7 + left][24 + right] = ADULT;
+        // bufferPointer[7 + left][26 + right] = ADULT;
+        // bufferPointer[8 + left][26 + right] = ADULT;
 
-        bufferPointer[4 + left][36 + right] = ADULT;
-        bufferPointer[4 + left][37 + right] = ADULT;
-        bufferPointer[5 + left][36 + right] = ADULT;
-        bufferPointer[5 + left][37 + right] = ADULT;
+        // bufferPointer[4 + left][36 + right] = ADULT;
+        // bufferPointer[4 + left][37 + right] = ADULT;
+        // bufferPointer[5 + left][36 + right] = ADULT;
+        // bufferPointer[5 + left][37 + right] = ADULT;
 
 
 
@@ -226,7 +234,7 @@ class Life {
                         backBuffer[row][col] = ADULT;
                     } else {
                         backBuffer[row][col] = currentBuffer[row][col];
-                        // backBuffer[row][col] = DEAD;                        
+                        backBuffer[row][col] = DEAD;
                     }
                 } else {
                     if (neighbors === 3) {
